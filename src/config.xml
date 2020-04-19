@@ -1,10 +1,11 @@
 <?xml version='1.0' encoding='UTF-8'?>
-<operator xmlns="http://wirecloud.conwet.fi.upm.es/ns/macdescription/1" vendor="CoNWeT" name="ngsi-source" version="4.2.0b2">
+<operator xmlns="http://wirecloud.conwet.fi.upm.es/ns/macdescription/1" vendor="FISUDA" name="ngsi-source" version="4.2.0b2">
     <details>
         <title>NGSI source</title>
-        <homepage>https://github.com/wirecloud-fiware/ngsi-source</homepage>
-        <authors>Álvaro Arranz García &lt;aarranz@conwet.com&gt;</authors>
-        <email>aarranz@conwet.com</email>
+        <homepage>https://github.com/lets-fiware/fisuda-ngsi-source</homepage>
+        <authors>Kazuhito Suda</authors>
+        <contributors>Álvaro Arranz García</contributors>
+        <email>wirecloud@fisuda.jp</email>
         <image>images/catalogue.png</image>
         <description>Retrieve Orion Context Broker entities and their updates in real time.</description>
         <longdescription>DESCRIPTION.md</longdescription>
@@ -12,7 +13,7 @@
         <licenseurl>http://www.apache.org/licenses/LICENSE-2.0.html</licenseurl>
         <doc>doc/userguide.md</doc>
         <changelog>doc/changelog.md</changelog>
-        <issuetracker>https://github.com/wirecloud-fiware/ngsi-source-operator/issues</issuetracker>
+        <issuetracker>https://github.com/lets-fiware/fisuda-ngsi-source-operator/issues</issuetracker>
     </details>
     <requirements>
         <feature name="NGSI"/>
