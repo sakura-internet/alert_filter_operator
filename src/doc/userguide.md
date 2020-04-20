@@ -7,7 +7,7 @@ time notifications about changes on the entities of interest.
 
 **NOTE:**
 This WireCloud operator is based on [ngsi-source-operator](https://github.com/wirecloud-fiware/ngsi-source-operator)
-created by CoNWeT Lab., Universidad Politecnica de Madrid.
+created by CoNWeT Lab., Universidad Politecnica de Madrid and Future Internet Consulting and Development Solutions S.L..
 
 Settings
 --------

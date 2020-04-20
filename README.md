@@ -11,7 +11,7 @@ subscription support to your dashboards in a simple way. Those subscriptions are
 
 **NOTE:**
 This WireCloud operator is based on [ngsi-source-operator](https://github.com/wirecloud-fiware/ngsi-source-operator)
-created by CoNWeT Lab., Universidad Politecnica de Madrid.
+created by CoNWeT Lab., Universidad Politecnica de Madrid and Future Internet Consulting and Development Solutions S.L..
 
 Latest version of this operator is always
 [provided in FIWARE Lab](https://store.lab.fiware.org/search/keyword/OrionStarterKit) where you can make use of it on
@@ -58,6 +58,7 @@ find general information about how to use operators on the
 ## Copyright and License
 
 Copyright (c) 2020 Kazuhito Suda<br>
+Copyright (c) 2019-2020 Future Internet Consulting and Development Solutions S.L.<br>
 Copyright (c) 2014-2016 CoNWeT Lab., Universidad Politecnica de Madrid
 
 Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with the
