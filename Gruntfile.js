@@ -200,13 +200,13 @@ module.exports = function (grunt) {
     grunt.registerTask('test', [
         'bower:install',
         'eslint',
-        'karma:operator'
+        // 'karma:operator'
     ]);
 
     grunt.registerTask('ci', [
         'bower:install',
         'eslint',
-        'karma:operatorci',
+        // 'karma:operatorci',
         'coveralls'
     ]);
 

@@ -63,11 +63,18 @@
             }
         });
 
-        // Create NGSI conection
-        doInitialSubscription.call(this);
+        if (!MashupPlatform.operator.inputs.ngsimetadataInput.connected) {
+            // Create NGSI conection
+            doInitialSubscription.call(this);
 
-        // Initial sent of configs on metadata output endpoint
-        sendMetadata();
+            // Initial sent of configs on metadata output endpoint
+            sendMetadata();
+        }
+
+        // Set NGSI metadata input callbacks
+        MashupPlatform.wiring.registerCallback("ngsimetadataInput", entities => {
+            handlerNgsiMetadataInput.call(this, entities);
+        });
     };
 
     /* *****************************************************************************/
@@ -204,6 +211,9 @@
         }
     };
 
+    var buffering = MashupPlatform.prefs.get('buffering');
+    var buffer = [];
+
     var requestInitialData = function requestInitialData(idPattern, types, filter, attrsFormat, page) {
         return this.connection.v2.listEntities(
             {
@@ -217,9 +227,18 @@
             }
         ).then(
             (response) => {
-                handlerReceiveEntities.call(this, attrsFormat, response.results);
+                if (buffering) {
+                    buffer = buffer.concat(response.results);
+                } else {
+                    handlerReceiveEntities.call(this, attrsFormat, response.results);
+                }
                 if (page < 100 && (page + 1) * 100 < response.count) {
                     return requestInitialData.call(this, idPattern, types, filter, attrsFormat, page + 1);
+                } else {
+                    if (buffering) {
+                        handlerReceiveEntities.call(this, attrsFormat, buffer);
+                        buffer = [];
+                    }
                 }
             },
             () => {
@@ -312,6 +331,51 @@
             };
             MashupPlatform.wiring.pushEvent('ngsimetadata', metadata);
         }
+    }
+
+    /* *************************** NGSI Metadata Input Hander *********************/
+
+    var metadataTable = [
+        { key: 'serverURL', pref: 'ngsi_server' },
+        { key: 'proxyURL', pref: 'ngsi_proxy' },
+        { key: 'use_user_fiware_token', pref: 'use_user_fiware_token' },
+        { key: 'use_owner_credentials', pref: 'use_owner_credentials' },
+        { key: 'tenant', pref: 'ngsi_tenant' },
+        { key: 'servicePath', pref: 'ngsi_service_path' },
+        { key: 'types', pref: 'ngsi_entities' },
+        { key: 'idPattern', pref: 'ngsi_id_filter' },
+        { key: 'query', pref: 'query' },
+        { key: 'updateAttributes', pref: 'ngsi_update_attributes' }
+    ];
+
+    var handlerNgsiMetadataInput = function handlerNgsiMetadataInput(metadata) {
+        if (metadata == null) {
+
+            if (MashupPlatform.operator.outputs.entityOutput.connected) {
+                MashupPlatform.wiring.pushEvent("entityOutput", null);
+            }
+
+            if (MashupPlatform.operator.outputs.normalizedOutput.connected) {
+                MashupPlatform.wiring.pushEvent("handlerNgsiMetadataInput", null);
+            }
+
+            return;
+        }
+
+        metadataTable.forEach(data => {
+            if (metadata[data.key] != null) {
+                MashupPlatform.prefs.set(data.pref, metadata[data.key]);
+            }
+        });
+
+        /*
+        if (this.connection == null) {
+            doInitialSubscription.call(this);
+        }
+
+        sendMetadata();
+        */
+        handlerPreferences.call(this);
     }
 
     /* import-block */
