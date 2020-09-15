@@ -1,22 +1,16 @@
-# NGSI source operator
+# Alert Filter operator
 
 [![](https://nexus.lab.fiware.org/repository/raw/public/badges/chapters/visualization.svg)](https://www.fiware.org/developers/catalogue/)
 ![](https://img.shields.io/github/license/lets-fiware/fisuda-ngsi-source-operator.svg)<br/>
 [![Build Status](https://travis-ci.org/lets-fiware/fisuda-ngsi-source-operator.svg?branch=develop)](https://travis-ci.org/lets-fiware/fisuda-ngsi-source-operator)
 [![Coverage Status](https://coveralls.io/repos/github/lets-fiware/fisuda-ngsi-source-operator/badge.svg?branch=develop)](https://coveralls.io/github/lets-fiware/fisuda-ngsi-source-operator?branch=develop)
 
-The NGSI source operator is a [WireCloud operator](http://wirecloud.readthedocs.org/en/latest/) usable for adding NGSI
-subscription support to your dashboards in a simple way. Those subscriptions are a great feature provided by the
-[Orion Context Broker](http://catalogue.fiware.org/enablers/publishsubscribe-context-broker-orion-context-broker).
+The Alert Filter operator is a [WireCloud operator](http://wirecloud.readthedocs.org/en/latest/) which can separate NGSI source values to 3 outputs by set threthold.
 
 **NOTE:**
 This WireCloud operator is based on [ngsi-source-operator](https://github.com/wirecloud-fiware/ngsi-source-operator)
 created by CoNWeT Lab., Universidad Politecnica de Madrid and Future Internet Consulting and Development Solutions S.L..
 
-Latest version of this operator is always
-[provided in FIWARE Lab](https://store.lab.fiware.org/search/keyword/OrionStarterKit) where you can make use of it on
-the [Mashup portal](https://mashup.lab.fiware.org). Remember to take a look into the example mashups provided in the
-OrionStarterKit offering.
 
 ## Build
 
@@ -57,7 +51,7 @@ find general information about how to use operators on the
 
 ## Copyright and License
 
-Copyright (c) 2020 Kazuhito Suda<br>
+Copyright (c) 2020 Shunsuke KIKUCHI<br>
 Copyright (c) 2019-2020 Future Internet Consulting and Development Solutions S.L.<br>
 Copyright (c) 2014-2016 CoNWeT Lab., Universidad Politecnica de Madrid
 
